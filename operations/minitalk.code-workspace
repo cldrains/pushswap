@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../../minitalk"
+		},
+		{
+			"path": "../../../.."
+		}
+	],
+	"settings": {
+		"42header.email": "tevers@student.42heilbronn.de",
+		"42header.username": "tevers",
+		"files.associations": {
+			"pushswap.h": "c"
+		}
+	}
+}

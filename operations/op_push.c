@@ -6,18 +6,18 @@
 /*   By: tevers <tevers@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 18:39:34 by tevers            #+#    #+#             */
-/*   Updated: 2023/07/17 03:23:59 by tevers           ###   ########.fr       */
+/*   Updated: 2023/07/30 04:25:13 by tevers           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Pushswap.h"
 
-void    pa(t_stack *stacka, t_stack *stackb)
+void	pa(t_node *nodea, t_node *nodeb)
 {
-    op_push(stacka, stackb);
+	op_push(nodea, nodeb);
 }
 
-void    pb(t_stack *stacka, t_stack *stackb)
+void	pb(t_node *nodea, t_node *nodeb)
 {
-    op_push(stackb, stacka);
+	op_push(nodeb, nodea);
 }

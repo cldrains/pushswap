@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_swap.c                                          :+:      :+:    :+:   */
+/*   valinput.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tevers <tevers@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/16 18:29:24 by tevers            #+#    #+#             */
-/*   Updated: 2023/07/30 02:46:05 by tevers           ###   ########.fr       */
+/*   Created: 2023/07/30 00:31:55 by tevers            #+#    #+#             */
+/*   Updated: 2023/08/01 18:49:09 by tevers           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Pushswap.h"
 
-void    sa(t_node *node)
+int ob_checkinput(int len, char **argv)
 {
-    op_swap(node);
-}
+	int i;
 
-void    sb(t_node *node)
-{
-    op_swap(node);
-}
-
-void    ss(t_node *nodea, t_node *nodeb)
-{
-    op_swap(nodea);
-    op_swap(nodeb);
+	i = 0;
+	while (--len)
+		if (!argv[len] || argv[len] == NULL || i++ < -1)
+			return (0);
+	return (i);
 }

@@ -6,75 +6,64 @@
 /*   By: tevers <tevers@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 21:44:59 by tevers            #+#    #+#             */
-/*   Updated: 2023/07/17 03:23:56 by tevers           ###   ########.fr       */
+/*   Updated: 2023/08/01 19:04:58 by tevers           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Pushswap.h"
 
-int     op_swap(t_stack *stack)
+int     op_swap(t_node *node)
 {
-    int     tmp;
+	t_node *tmp;
 
-    if (!stack || !stack->val)
-        return (0);
-    while (stack->next != NULL)
-        stack = stack->next;
-    if (stack->prev != NULL)
-    {
-        tmp = stack->val;
-        stack->val = stack->prev->val;
-        stack->prev->val = tmp;
-    }
-    else
-        return (0);
-    return (1);
+	if (!node->next || !node)
+		return (0);
+	while (node->next->next != NULL)
+		node = node->next;
+	tmp = node;
+	node = node->next;
+	node->next = tmp;
+	tmp->next = NULL;
+	return (1);
 }
 
-int     op_push(t_stack *stacka, t_stack *stackb)
+int		op_push(t_node *nodea, t_node *nodeb)
 {
-    if (!stacka || !stacka->val || !stackb)
-        return (0);
-    while (stacka->next != NULL)
-        stacka = stacka->next;
-    while (stackb->next != NULL)
-        stackb = stackb->next;
-    stackb->next = stacka;
-    if (stacka->prev != NULL)
-        stacka->prev->next = NULL;
-    return (1);
+	if (!nodea || !nodea->val || !nodeb)
+		return (0);
+	while (nodea->next != NULL)
+		nodea = nodea->next;
+	nodea->next = NULL;
+	while (nodeb->next != NULL)
+		nodeb = nodeb->next;
+	nodeb->next = nodea;
+	return (1);
 }
 
-int     op_rotate(t_stack *stack)
+int		op_rotate(t_node *node)
 {
-    int tmp;
+	t_node	*tmp;
 
-    if (!stack || !stack->val || !stack->next)
-        return (0);
-    tmp = stack->val;
-    while (stack->next != NULL)
-    {
-        stack->val = stack->next->val;
-        stack = stack->next;
-    }
-    stack->val = tmp;
-    return (1);
+	if (!node || !node->val || !node->next)
+		return (0);
+	tmp = node;
+	while (node->next->next != NULL)
+	{
+		node->val = node->next->val;
+		node = node->next;
+	}
+	return (1);
 }
 
-int     op_rev_rotate(t_stack *stack)
+int		op_rev_rotate(t_node *node)
 {
-    int tmp;
+	int	tmp;
 
-    if (!stack || !stack->val || !stack->next)
-        return (0);
-    while (stack->next != NULL)
-        stack = stack->next;
-    tmp = stack->val;
-    while (stack->prev != NULL)
-    {
-        stack->prev->val = stack->val;
-        stack = stack->prev;
-    }
-    stack->val = tmp;
-    return (1);
+	if (!node || !node->val || !node->next)
+		return (0);
+	while (node->next != NULL)
+		node = node->next;
+	tmp = node->val;
+	node->val = tmp;
+	return (1);
 }
